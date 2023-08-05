@@ -1,0 +1,14 @@
+# version: '1.0'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: .docker/php/Dockerfile
+    image: test-laravel-ardhian
+    container_name: test-laravel-ardhian
+    restart: always
+    ports:
+      - 44080:80
+      - 440443:443
+    volumes:
+      - .:/var/www/html
