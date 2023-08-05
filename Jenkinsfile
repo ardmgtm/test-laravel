@@ -8,7 +8,7 @@ pipeline {
         }
         stage('running') {
             steps {
-                sh 'php -S localhost:4450 -t "%cd%/public"'
+                sh 'php -S localhost:4450 -t "%PWD%/public"'
             }
         }
     }
