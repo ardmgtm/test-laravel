@@ -51,12 +51,18 @@ RUN usermod -u 1000 www-data
 
 RUN a2enmod rewrite && service apache2 restart
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && composer install --no-interaction
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+RUN composer install
 
 RUN apt-get update && apt-get install -y \
     software-properties-common
 
-RUN chown -R www-data:www-data /var/www/html
+RUN cp .env.example .env
+
+RUN php artisan key:generate
+
 RUN find /var/www/html -type d -exec chmod 775 {} \;
 RUN find /var/www/html -type f -exec chmod 0664 {} \;
 
+RUN chown -R www-data:www-data /var/www/html
