@@ -8,7 +8,7 @@ pipeline {
         }
         stage('running') {
             steps {
-                sh 'php -S 12.7.108.141:4450 -t "$PWD/public"'
+                sh 'php -S 127.0.0.1:4450 -t "$PWD/public"'
             }
         }
     }
