@@ -54,12 +54,7 @@ RUN a2enmod rewrite && service apache2 restart
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && composer install --no-interaction
 
 RUN apt-get update && apt-get install -y \
-    software-properties-common \
-    npm
-
-RUN npm install npm@latest -g && \
-    npm install n -g && \
-    n latest
+    software-properties-common
 
 RUN chown -R www-data:www-data /var/www/html
 RUN find /var/www/html -type d -exec chmod 775 {} \;
