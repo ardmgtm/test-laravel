@@ -6,6 +6,11 @@ pipeline {
                 sh 'php --version'
             }
         }
+        stage('composer install') {
+            steps {
+                sh 'composer install'
+            }
+        }
         stage('running') {
             steps {
                 sh 'php -S 127.0.0.1:4450 -t "$PWD/public"'
